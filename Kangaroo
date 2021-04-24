@@ -1,0 +1,28 @@
+import java.util.*;
+public class Kangaroo{
+	public static void main(String args[]) throws java.lang.Exception {
+		Scanner sc= new Scanner(System.in);
+		int x1=sc.nextInt();
+		int v1=sc.nextInt();
+		int x2=sc.nextInt();
+		int v2=sc.nextInt();
+		try {
+			int result=(x1-x2)%(v2-v1);
+		if(v1>v2) {
+			if(result==0) {
+				System.out.println("YES");
+			}
+			else {
+				System.out.println("NO");
+			}
+		}
+		else {
+			System.out.println("NO");
+		}
+		}
+		catch(Exception e) {
+			System.out.println("NO");
+		}
+	sc.close();
+	}
+}
