@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.math.*;
+public class Sample {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.next();
+        long n=sc.nextLong();
+        int len=s.length();
+        int count=0;
+        for(int i=0;i<s.length();i++) {
+            if(s.charAt(i)=='a') {
+                count++;
+            }
+        }
+        long comp=n/len;
+        long ans=0;
+        ans+=comp*count;
+        long incomp=n-(comp*s.length());
+        if(incomp!=0) {
+            String check=s.substring(0,(int)incomp);
+            for(int i=0;i<check.length();i++) {
+                if(check.charAt(i)=='a') {
+                    ans+=1;
+                }
+            }
+        }
+        System.out.println(ans);
+}
+}
