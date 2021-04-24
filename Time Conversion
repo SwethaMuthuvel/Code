@@ -1,0 +1,31 @@
+import java.util.*;
+public class TimeConversion{
+	static String TimeConvert(String str) {
+		 String s[]= str.split(":");
+	       char c[]=s[2].toCharArray();
+	       if(s[2].contains("PM")) {
+	    	  int n= Integer.valueOf(s[0]);
+	    	  if(n==12) {
+	    		  s[0]="12";
+	    	  }
+	    	  else {
+	    		 n=n+12;
+	    		 s[0]=String.valueOf(n);
+	    	  }
+	    	  return (s[0]+":"+s[1]+":"+c[0]+c[1]);
+	       }
+	       else {
+	    	   int n=Integer.parseInt(s[0]);
+	    	   if(n==12) {
+	    		   s[0]="00";
+	    	   }
+	    	   return (s[0]+":"+s[1]+":"+c[0]+c[1]);
+	       }
+	}
+    public static void main(String args[]){
+       Scanner sc= new Scanner(System.in);
+       String str=sc.nextLine();
+       System.out.println(TimeConvert(str));
+   sc.close();
+    }
+}
