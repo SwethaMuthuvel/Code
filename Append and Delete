@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class AppendDelete {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        String s=sc.nextLine();
+        String t=sc.nextLine();
+        int k=sc.nextInt();
+        int match=0;
+        for(int i=s.length();;i--) {
+            String check=s.substring(0,i);
+            if(t.startsWith(check)) {
+                match=i;
+                break;
+            }
+        }
+        int sum=(s.length()-match)+(t.length()-match);
+        if(k>=(s.length()+t.length())) {
+            
+            System.out.println("Yes");
+        }
+        else if(sum<=k && (k-sum)%2==0) {
+            System.out.println("Yes");
+        }
+        else {
+            System.out.println("No");
+        }
+    sc.close();
+    }
+}
