@@ -1,0 +1,28 @@
+import java.util.*;
+public class Sample{
+    public static void main(String args[]){
+        Scanner sc= new Scanner(System.in);
+        int q=sc.nextInt();
+        String res[]= new String[q];
+        for(int query=0;query<q;query++){
+            int n=sc.nextInt();
+            int type[]= new int[n];
+            int container[]=new int[n];
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                	int input=sc.nextInt();
+                    type[j]=type[j]+input;
+                    container[i]=container[i]+input;
+                }
+            }
+            Arrays.sort(type);
+            Arrays.sort(container);
+            if(Arrays.equals(type,container)){
+                System.out.println("Possible");
+            }
+            else{
+            	 System.out.println("Impossible");
+            }
+        }
+    }
+}
