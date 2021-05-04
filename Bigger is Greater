@@ -1,0 +1,41 @@
+import java.util.*;
+public class Sample{
+    public static void main(String args[]){
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        sc.nextLine();
+        for(int count=0;count<n;count++){
+            String w=sc.nextLine();
+            char arr[]=w.toCharArray();
+            int len=arr.length;
+            int endi=len-1;
+            for(endi=len-1;endi>0;endi--){
+                if(arr[endi]>arr[endi-1]){
+                    break;
+                }
+            }
+            if(endi==0){
+                System.out.println("no answer");
+            }
+            else{
+                int firstchar=endi-1,nextchar=endi;
+                for(int i=endi+1;i<arr.length;i++){
+                    if(arr[i]>arr[firstchar] && arr[i]<arr[nextchar]){
+                        nextchar=i;
+                    }
+                }
+                int temp=arr[nextchar];
+                arr[nextchar]=arr[firstchar];
+                arr[firstchar]=(char)temp;
+                Arrays.sort(arr,endi,len);
+                StringBuilder sbf = new StringBuilder("");
+                for(int i=0;i<arr.length;i++) {
+                    sbf.append(arr[i]);
+                }
+                System.out.println(sbf);
+            }
+          
+        }
+        
+    }
+}
