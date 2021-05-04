@@ -1,0 +1,26 @@
+import java.util.*;
+public class Sample{
+    public static void main(String args[]){
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+            max=Math.max(max,arr[i]);
+        }
+        Arrays.sort(arr);
+        int freq[]=new int[max+1];
+        for(int i=0;i<n;i++){
+            freq[arr[i]]++;
+        }
+        int max_res=0,res=0;
+        for(int m=0;m<freq.length;m++) {
+            if(max_res<freq[m]) {
+                max_res=freq[m];
+                res=m;
+            }
+        }
+        System.out.println(res);
+    }
+}
