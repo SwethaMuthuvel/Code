@@ -1,0 +1,32 @@
+import java.util.*;
+public class Sample{
+    public static int kaprekar(int n) {
+        int d=String.valueOf(n).length();
+        long sq=(long)Math.pow(n,2);
+        long quo= sq/(long)Math.pow(10,d);
+        long mod= sq%(long)Math.pow(10,d);
+        long sum=quo+mod;
+        if(sum==n) {
+            return n;
+        }
+        else {
+            return -1;
+        }
+    }
+    public static void main(String args[]) {
+        Scanner sc= new Scanner(System.in);
+        int p=sc.nextInt();
+        int q=sc.nextInt();
+        boolean flag=false;
+        for(int i=p;i<=q;i++) {
+            int res=kaprekar(i);
+            if(res!=-1) {
+                System.out.print(res+" ");
+                flag=true;
+            }
+        }
+        if(flag==false){
+            System.out.println("INVALID RANGE");
+        }
+    }
+}
