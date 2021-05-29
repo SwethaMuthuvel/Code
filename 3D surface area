@@ -1,0 +1,67 @@
+public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		int row=sc.nextInt();
+		int col=sc.nextInt();
+		int arr[][]=new int[row][col];
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				arr[i][j]=sc.nextInt();
+			}
+		}
+		int sum=0,cur_area=0;
+		for(int r=0;r<row;r++) {
+			for(int c=0;c<col;c++) {
+				cur_area=(4*arr[r][c])+2;
+				cur_area=left(cur_area,arr,r,c);
+				cur_area=right(cur_area,arr,r,c,col);
+				cur_area=front(cur_area,arr,r,c);
+				cur_area=back(cur_area,arr,r,c,row);
+				sum=sum+cur_area;
+			}
+		}
+		System.out.println(sum);
+	}
+	//left
+	public static int left(int cur_area,int[][] arr, int r,int c) {
+		if(c!=0) {
+			int prev=(arr[r][c-1]);
+			int min=Math.min(arr[r][c], prev);
+			return (cur_area-(min*1));
+		}
+		else {
+			return cur_area;
+		}
+	}
+	//right
+	public static int right(int cur_area,int[][] arr, int r,int c,int col) {
+		if(c!=col-1) {
+			int next=(arr[r][c+1]);
+			int min=Math.min(arr[r][c], next);
+			return (cur_area-(min*1));
+		}
+		else {
+			return cur_area;
+		}
+	}
+	//front
+	public static int front(int cur_area,int[][] arr, int r,int c) {
+		if(r!=0) {
+			int prev=(arr[r-1][c]);
+			int min=Math.min(arr[r][c], prev);
+			return (cur_area-(min*1));
+		}
+		else {
+			return cur_area;
+		}
+	}
+	//back
+	public static int back(int cur_area,int[][] arr, int r,int c,int row) {
+		if(r!=row-1) {
+			int next=(arr[r+1][c]);
+			int min=Math.min(arr[r][c], next);
+			return (cur_area-(min*1));
+		}
+		else {
+			return cur_area;
+		}
+	}
