@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> brackets= new Stack<>();
+        for(char c: s.toCharArray()){
+            switch(c){
+                //if encountering open brackets
+                case '(':
+                    brackets.push('(');
+                    break;
+                case '{':
+                    brackets.push('{');
+                    break;
+                case '[':
+                    brackets.push('[');
+                    break;
+                //if encountering close brackets
+                case ')':
+                    if(brackets.empty() || brackets.peek()!='('){return false;}
+                    else{ brackets.pop();}
+                    break;
+                case '}':
+                    if(brackets.empty() || brackets.peek()!='{'){return false;}
+                    else{ brackets.pop();}
+                    break;
+                case ']':
+                    if(brackets.empty() || brackets.peek()!='['){return false;}
+                    else{ brackets.pop();}
+                    break;
+            }//end of switch
+        }//end of for
+    return brackets.isEmpty();
+    }
+}
