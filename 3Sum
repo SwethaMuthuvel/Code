@@ -1,0 +1,29 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] arr) {
+        int n=arr.length;
+        Arrays.sort(arr);
+        HashMap<Integer,Integer> map= new HashMap<>();
+        HashSet<String> set= new HashSet<>();
+        for(int i=0;i<n;i++) {
+        	map.put(arr[i],i);
+        }
+        List<List<Integer>> result= new ArrayList<List<Integer>>();
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                int sum=arr[i]+arr[j];
+                int target=sum;
+                if(map.containsKey(-1*target)){
+                    int val1=arr[i];
+                    int val2=arr[j];
+                    int val3=target;
+                    int k=map.get(-1*target);
+                    if(!set.contains(val1+":"+val2+":"+val3) && (k>i && k>j)){
+                        set.add(val1+":"+val2+":"+val3);
+                        result.add(Arrays.asList(arr[i],arr[j],arr[k]));
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}
